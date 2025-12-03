@@ -1,31 +1,32 @@
 @use 'variables';
 
 .calendar {
-  max-width: 715px;
-  padding: 10px;
+  max-width: variables.$width-calendar;
+  padding: variables.$padding-calendar;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-  gap: 1px;
+  gap: variables.$gap-calendar;
 
   $days: mon, tue, wed, thu, fri, sat, sun;
 
   @each $day in $days {
-    &_start-day-#{$day} {
-      margin-left: 0;
+    &--start-day-#{$day}:first-child {
+      margin-left: 10px;
     }
   }
 
   @for $i from 28 through 31 {
-    &--month-lengh:nth-child(#{$i}) {
-      justify-content: flex-start;
+    &--month-length-#{$i}:nth-child(#{$i}) {
+      display: none;
     }
   }
 
   &__day {
-    width: 100px;
-    height: 100px;
+    box-sizing: border-box;
+    width: variables.$width-calendar__day;
+    height: variables.$height-calendar__day;
     background-color: variables.$background-color-calendar__day;
     border: 1px solid variables.$color-border-calendar__day;
     cursor: pointer;
